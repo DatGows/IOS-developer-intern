@@ -1,0 +1,19 @@
+create table Teachers(
+teacherID int primary key,
+firstName varchar(255),
+lastName varchar(255),
+Gender varchar(255),
+Subject varchar(255),
+pupilID int foreign key references Pupils(pupilID)
+);
+
+create table Pupils(
+pupilID int primary key,
+firstName varchar(255),
+lastName varchar(255),
+Gender varchar(255),
+teacherID int foreign key references Teachers(teacherID)
+);
+
+select * from Teachers
+where pupilID = (select pupilID from Pupils where firstName = 'გიორგი')
